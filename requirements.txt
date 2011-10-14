@@ -1,0 +1,4 @@
+Pygments==1.4
+docutils==0.7
+reportlab==2.5
+rst2pdf==0.16

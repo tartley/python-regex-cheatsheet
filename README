@@ -1,0 +1,17 @@
+Python Regular Expression Cheatsheet
+====================================
+
+To generate the PDF:
+
+* Install Python 2.7
+
+* Install pip
+
+* Install this project's dependencies using::
+
+    $ pip install -r requirements.txt
+
+* Generate the PDF using::
+
+    $ make
+
