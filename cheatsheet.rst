@@ -81,8 +81,8 @@ Flags for re.compile(). Combine with ``'|'``::
     re.M    re.MULTILINE    Multiline
     re.S    re.DOTALL       Dot matches all (including newline)
     re.U    re.UNICODE      Make \w, \b, \d, and \s unicode dependent
-    re.X    re.VERBOSE      Verbose (unescaped whitespace in pattern is ignored,
-                            and '#' marks comments, up till next newline)
+    re.X    re.VERBOSE      Verbose (unescaped whitespace in pattern
+                            is ignored, and '#' marks comment lines)
 
 
 Module level functions::
@@ -108,10 +108,10 @@ RegexObjects (returned from ``compile()``)::
     split(string[, maxsplit]) -> list of strings
     sub(repl, string[, count]) -> string
     subn(repl, string[, count]) -> (string, int)
-    flags       int passed to compile()
-    groups      int number of capturing groups
-    groupindex  { 'name': id }
-    pattern     string
+    flags       # int, passed to compile()
+    groups      # int, number of capturing groups
+    groupindex  # dict maps group names to ints
+    pattern     # string, passed to compile()
 
 
 MatchObjects (returned from ``match()`` and ``search()``)::
@@ -120,8 +120,8 @@ MatchObjects (returned from ``match()`` and ``search()``)::
     group([group1...]) -> string # or tuple of strings, one per arg
     groups([default]) -> tuple of all groups, non-matching='default'
     groupdict([default]) -> dict of named groups, non-matching='default'
-    start([group]) -> indices of start/end of substring matched by group
-    end([group])      group defaults to 0, which means the whole match.
+    start([group]) -> int, start of substring matched by group
+    end([group])      (group defaults to 0, the whole match)
     span([group]) -> tuple (match.start(group), match.end(group))
     pos -> the value passed to search() or match()
     endpos -> "
@@ -131,6 +131,6 @@ MatchObjects (returned from ``match()`` and ``search()``)::
     string -> the string passed to seatch() or match()
 
 
-:Version: v0.2
-:Contact: tartley@tartley.com
 Gleaned from the python 2.7 're' docs. http://docs.python.org/library/re.html
+:Version: v0.2.1
+:Contact: tartley@tartley.com
