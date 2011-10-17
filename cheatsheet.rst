@@ -14,7 +14,9 @@ Special characters::
 
 No special chars do anything special inside ``[]``, hence they don't need
 escaping, except for ``']'`` and ``'-'``, which only need escaping if they are
-not the 1st char. e.g. ``'[]]'`` matches ``']'``.
+not the 1st char. e.g. ``'[]]'`` matches ``']'``. ``'^'`` also has special meaning,
+it negates the group if it's the first character in the ``[]``, and needs to be
+escaped if you want to match it literally.
 
 Quantifiers::
 
