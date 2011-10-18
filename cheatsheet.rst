@@ -60,8 +60,7 @@ literals. Hence regex '``\n``' is same as regex '``\\n``'::
            (or use a preceding zero, e.g. \0, \09)
     \DD    Decimal number 1 to 99, matches previous
            numbered group
-.
-.
+
 Extensions. These do not cause grouping, except for ``(?P<name>...)``::
 
     (?iLmsux)       Matches empty string, letters set re.X flags
@@ -134,5 +133,6 @@ MatchObjects (returned from ``match()`` and ``search()``)::
 
 
 Gleaned from the python 2.7 're' docs. http://docs.python.org/library/re.html
+
 :Version: v0.2.1
 :Contact: tartley@tartley.com
