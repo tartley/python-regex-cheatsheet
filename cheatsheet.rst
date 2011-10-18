@@ -134,5 +134,6 @@ MatchObjects (returned from ``match()`` and ``search()``)::
 
 Gleaned from the python 2.7 're' docs. http://docs.python.org/library/re.html
 
-:Version: v0.2.1
+:Version: v0.3.0
 :Contact: tartley@tartley.com
+
