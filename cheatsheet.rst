@@ -66,7 +66,7 @@ Extensions. These do not cause grouping, except for ``(?P<name>...)``::
     (?iLmsux)       Matches empty string, letters set re.X flags
     (?:...)         Non-capturing version of regular parentheses
     (?P<name>...)   Creates a named capturing group.
-    (?P=<name>)     Matches whatever matched previously named group
+    (?P=name)       Matches whatever matched previously named group
     (?#...)         A comment; ignored.
     (?=...)         Lookahead assertion: Matches without consuming
     (?!...)         Negative lookahead assertion
