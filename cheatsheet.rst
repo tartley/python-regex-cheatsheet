@@ -12,11 +12,11 @@ Special characters::
     R|S     matches either regex R or regex S.
     ()      Creates a capture group, and indicates precedence.
 
-No special chars do anything special inside ``[]``, hence they don't need
+Within ``[]``, no special chars do anything special, hence they don't need
 escaping, except for ``']'`` and ``'-'``, which only need escaping if they are
-not the 1st char. e.g. ``'[]]'`` matches ``']'``. ``'^'`` also has special meaning,
-it negates the group if it's the first character in the ``[]``, and needs to be
-escaped if you want to match it literally.
+not the 1st char. e.g. ``'[]]'`` matches ``']'``. ``'^'`` also has special
+meaning, it negates the group if it's the first character in the ``[]``, and
+needs to be escaped to match it literally.
 
 Quantifiers::
 
@@ -26,7 +26,6 @@ Quantifiers::
     {m}     exactly 'm'
     {m,n}   from m to n. 'm' defaults to 0, 'n' to infinity
     {m,n}?  from m to n, as few as possible
-
 
 Special sequences::
 
@@ -63,7 +62,7 @@ literals. Hence regex '``\n``' is same as regex '``\\n``'::
 
 Extensions. These do not cause grouping, except for ``(?P<name>...)``::
 
-    (?iLmsux)       Matches empty string, letters set re.X flags
+    (?iLmsux)       Matches empty string, sets re.X flags
     (?:...)         Non-capturing version of regular parentheses
     (?P<name>...)   Creates a named capturing group.
     (?P=<name>)     Matches whatever matched previously named group
@@ -72,68 +71,64 @@ Extensions. These do not cause grouping, except for ``(?P<name>...)``::
     (?!...)         Negative lookahead assertion
     (?<=...)        Lookbehind assertion: Matches if preceded
     (?<!...)        Negative lookbehind assertion
-    (?(id)yes|no)   If group 'id' matched, match 'yes', else 'no'
+    (?(id)yes|no)   Match 'yes' if group 'id' matched, else 'no'
 
+Flags for re.compile(), etc. Combine with ``'|'``::
 
-Flags for re.compile(). Combine with ``'|'``::
-
-    re.I    re.IGNORECASE   Ignore case
-    re.L    re.LOCALE       Make \w, \b, and \s locale dependent
-    re.M    re.MULTILINE    Multiline
-    re.S    re.DOTALL       Dot matches all (including newline)
-    re.U    re.UNICODE      Make \w, \b, \d, and \s unicode dependent
-    re.X    re.VERBOSE      Verbose (unescaped whitespace in pattern
+    re.I == re.IGNORECASE   Ignore case
+    re.L == re.LOCALE       Make \w, \b, and \s locale dependent
+    re.M == re.MULTILINE    Multiline
+    re.S == re.DOTALL       Dot matches all (including newline)
+    re.U == re.UNICODE      Make \w, \b, \d, and \s unicode dependent
+    re.X == re.VERBOSE      Verbose (unescaped whitespace in pattern
                             is ignored, and '#' marks comment lines)
-
 
 Module level functions::
 
-    re.compile(pattern[, flags]) -> RegexObject
-    re.match(pattern, string[, flags]) -> MatchObject
-    re.search(pattner, string[, flags]) -> MatchObject
-    re.findall(pattern, string[, flags]) -> list of strings
-    re.finditer(pattern, string[, flags]) -> iter of MatchObjects
-    re.split(pattern, string[, maxsplit, flags]) -> list of strings
-    re.sub(pattern, repl, string[, count, flags]) -> string
-    re.subn(pattern, repl, string[, count, flags]) -> (string, int)
-    re.escape(string) -> string
-    re.purge() # the re cache
-
+    compile(pattern[, flags]) -> RegexObject
+    match(pattern, string[, flags]) -> MatchObject
+    search(pattner, string[, flags]) -> MatchObject
+    findall(pattern, string[, flags]) -> list of strings
+    finditer(pattern, string[, flags]) -> iter of MatchObjects
+    split(pattern, string[, maxsplit, flags]) -> list of strings
+    sub(pattern, repl, string[, count, flags]) -> string
+    subn(pattern, repl, string[, count, flags]) -> (string, int)
+    escape(string) -> string
+    purge() # the re cache
 
 RegexObjects (returned from ``compile()``)::
 
-    match(string[, pos, endpos]) -> MatchObject
-    search(string[, pos, endpos]) -> MatchObject
-    findall(string[, pos, endpos]) -> list of strings
-    finditer(string[, pos, endpos]) -> iter of MatchObjects
-    split(string[, maxsplit]) -> list of strings
-    sub(repl, string[, count]) -> string
-    subn(repl, string[, count]) -> (string, int)
-    flags       # int, passed to compile()
-    groups      # int, number of capturing groups
-    groupindex  # dict maps group names to ints
-    pattern     # string, passed to compile()
-
+    .match(string[, pos, endpos]) -> MatchObject
+    .search(string[, pos, endpos]) -> MatchObject
+    .findall(string[, pos, endpos]) -> list of strings
+    .finditer(string[, pos, endpos]) -> iter of MatchObjects
+    .split(string[, maxsplit]) -> list of strings
+    .sub(repl, string[, count]) -> string
+    .subn(repl, string[, count]) -> (string, int)
+    .flags       # int passed to compile()
+    .groups      # int number of capturing groups
+    .groupindex  # {} maps group names to ints
+    .pattern     # string passed to compile()
 
 MatchObjects (returned from ``match()`` and ``search()``)::
 
-    expand(template) -> string # backslash and group expansion
-    group([group1...]) -> string # or tuple of strings, one per arg
-    groups([default]) -> tuple of all groups, non-matching='default'
-    groupdict([default]) -> dict of named groups, non-matching='default'
-    start([group]) -> int, start of substring matched by group
-    end([group])      (group defaults to 0, the whole match)
-    span([group]) -> tuple (match.start(group), match.end(group))
-    pos -> the value passed to search() or match()
-    endpos -> "
-    lastindex -> int index of last matched capturing group
-    lastgroup -> string name of last matched capturing group
-    re -> the regex passed to search() or match()
-    string -> the string passed to seatch() or match()
+    .expand(template) -> string, backslash and group expansion
+    .group([group1...]) -> string or tuple of strings, 1 per arg
+    .groups([default]) -> (,) of all groups, non-matching=default
+    .groupdict([default]) -> {} of named groups, non-matching=default
+    .start([group]) -> int, start/end of substring matched by group
+    .end([group])      (group defaults to 0, the whole match)
+    .span([group]) -> tuple (match.start(group), match.end(group))
+    .pos # value passed to search() or match()
+    .endpos # "
+    .lastindex # int index of last matched capturing group
+    .lastgroup # string name of last matched capturing group
+    .re # regex passed to search() or match()
+    .string # string passed to search() or match()
 
 
 Gleaned from the python 2.7 're' docs. http://docs.python.org/library/re.html
 
-:Version: v0.3.0
+:Version: v0.3.1
 :Contact: tartley@tartley.com
 
