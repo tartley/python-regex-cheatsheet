@@ -26,6 +26,9 @@ Quantifiers::
     {m}     exactly 'm'
     {m,n}   from m to n. 'm' defaults to 0, 'n' to infinity
     {m,n}?  from m to n, as few as possible
+    {,1}    is the same as using ?
+    {0,}    is the same as using *
+    {1,}    is the same as using +
 
 Special sequences::
 
@@ -39,7 +42,6 @@ Special sequences::
     \w  Alphanumeric: [0-9a-zA-Z_], or is LOCALE dependant
     \W  Non-alphanumeric
     \Z  End of string
-
     \g<id>  Match previous named or numbered group,
             e.g. \g<0> or \g<name>
 
