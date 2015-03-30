@@ -40,8 +40,8 @@ Special sequences::
     \W  Non-alphanumeric
     \Z  End of string
 
-    \g<id>  Match previous named or numbered group,
-            e.g. \g<0> or \g<name>
+    \g<id>  Match previous group, '<' & '>' are literal
+            e.g. \g<0> or \g<name> (not \g0 or \gname)
 
 Special character escapes are much like those already escaped in Python string
 literals. Hence regex '``\n``' is same as regex '``\\n``'::
