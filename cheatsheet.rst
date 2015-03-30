@@ -51,7 +51,7 @@ literals. Hence regex '``\n``' is same as regex '``\\n``'::
     \a  ASCII Bell (BEL)
     \f  ASCII Formfeed
     \n  ASCII Linefeed
-    \r  ASCII Carraige return
+    \r  ASCII Carriage return
     \t  ASCII Tab
     \v  ASCII Vertical tab
     \\  A single backslash
