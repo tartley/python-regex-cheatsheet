@@ -3,13 +3,13 @@ Python 2.7 Regular Expressions
 
 Non-special chars match themselves. Exceptions are special characters::
 
-    \       Escape special char
+    \       Escape special char or start a sequence.
     .       Match any char except newline, see re.DOTALL
     ^       Match start of the string, see re.MULTILINE
     $       Match end of the string, see re.MULTILINE
     []      Enclose a set of matchable chars
     R|S     Match either regex R or regex S.
-    ()      Create capture group, and indicate precedence
+    ()      Create capture group, & indicate precedence
 
 After '``[``', enclose a set, the only special chars are::
 
@@ -19,11 +19,11 @@ After '``[``', enclose a set, the only special chars are::
 
 Quantifiers (append '``?``' for non-greedy)::
 
-    *       0 or more
-    +       1 or more
-    ?       0 or 1
-    {m}     Exactly 'm'
+    {m}     Exactly m repetitions
     {m,n}   From m (default 0) to n (default infinity)
+    *       0 or more. Same as {,}
+    +       1 or more. Same as {1,}
+    ?       0 or 1. Same as {,1}
 
 Special sequences::
 
