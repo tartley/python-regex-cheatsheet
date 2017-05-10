@@ -84,7 +84,7 @@ Module level functions::
 
     compile(pattern[, flags]) -> RegexObject
     match(pattern, string[, flags]) -> MatchObject
-    search(pattner, string[, flags]) -> MatchObject
+    search(pattern, string[, flags]) -> MatchObject
     findall(pattern, string[, flags]) -> list of strings
     finditer(pattern, string[, flags]) -> iter of MatchObjects
     split(pattern, string[, maxsplit, flags]) -> list of strings
